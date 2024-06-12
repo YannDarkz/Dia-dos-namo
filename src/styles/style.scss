@@ -1,0 +1,211 @@
+$bg: #000;
+
+$tab-bg: #f9f9f9;
+
+$f-color: #ba9872;
+$s-color: #967b5c;
+$t-color: #a38564;
+$fo-color: #f9f9f9;
+$fi-color: #e2e2e2;
+
+//Mixins
+@mixin posAbsolute($p) {
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  @if ($p == a) {
+    position: absolute;
+  } @else if($p == r) {
+    position: relative;
+  }
+}
+
+// General styles
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  background-color: $bg;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-height: 500px) {
+    margin: 25% 0 25% 0;
+  }
+}
+
+//Styles
+.envelop {
+  width: 15rem;
+  height: 10rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  @media (min-width: 400px) and (max-width: 600px) {
+    width: 20rem;
+    height: 15rem;
+  }
+  @media (min-width: 600px) {
+    width: 25rem;
+    height: 20rem;
+  }
+  @media (min-width: 600px) and (min-height: 600px) {
+    bottom: 20%;
+  }
+
+  &__front-paper {
+    @include posAbsolute(a);
+    border-radius: 0.7rem;
+    border: 0.35rem solid $s-color;
+    background-color: $f-color;
+    clip-path: polygon(100% 0%, 50% 70%, 0% 0%, 0% 100%, 100% 100%);
+    z-index: 300;
+  }
+
+  &__back-paper {
+    @include posAbsolute(a);
+    border-radius: 0.7rem;
+    background-color: $s-color;
+    clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 0% 90%);
+    z-index: 100;
+  }
+
+  &__up-paper {
+    @include posAbsolute(r);
+    border-radius: 0.7rem;
+    background-color: $s-color;
+    z-index: 400;
+    clip-path: polygon(0% 0%, 100% 0%, 50% 81%);
+  }
+
+  &__sticker {
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    margin: auto;
+    top: 30%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 400;
+    background-image: url("https://www.freepnglogos.com/uploads/heart-png/emoji-heart-33.png");
+    background-color: $fo-color;
+    border: 0.3rem solid $fi-color;
+    background-size: 2rem;
+    background-position: center;
+
+    @media (max-width: 400px) {
+      background-size: 1.2rem;
+    }
+    @media (min-width: 600px) {
+      height: 15%;
+    }
+  }
+
+  &__false-sticker {
+    width: 20%;
+    height: 20%;
+    position: absolute;
+    margin: auto;
+    top: 30%;
+    left: 80%;
+    bottom: 0;
+    right: 0;
+    z-index: 300;
+    background-image: url("https://www.freepnglogos.com/uploads/heart-png/emoji-heart-33.png");
+    background-color: $fo-color;
+    border: 0.3rem solid $fi-color;
+    background-size: 2rem;
+    background-position: center;
+
+    @media (max-width: 400px) {
+      background-size: 1.2rem;
+    }
+    @media (min-width: 600px) {
+      height: 15%;
+    }
+  }
+
+  &__content {
+    @include posAbsolute(a);
+    z-index: 200;
+  }
+}
+
+.love-notes {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.note {
+  width: 95%;
+  height: 30%;
+  background-color: $tab-bg;
+  position: absolute;
+  overflow: hidden;
+  transition: height 0.5s, opacity 0.25s;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+
+  &:nth-child(1) {
+    bottom: 60%;
+  }
+
+  &:nth-child(2) {
+    bottom: 40%;
+  }
+
+  &:nth-child(3) {
+    bottom: 20%;
+  }
+
+  &:hover {
+    cursor: pointer;
+    height: 45%;
+  }
+
+  &__text {
+    font-family: "Sofia";
+    padding: 1rem;
+
+    p {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      text-align: center;
+
+      @media (min-width: 300px) and (max-width: 600px) {
+        font-size: 1.025rem;
+      }
+      @media (min-width: 600px) {
+        font-size: 1.15rem;
+      }
+    }
+  }
+}
+
+.scissors {
+  cursor: url("https://i.postimg.cc/GtLCdKxR/sisors.png"), pointer;
+  &:active {
+    cursor: url("https://i.postimg.cc/GtXQ7WPZ/pngwing-com.png"), pointer;
+  }
+}
+
+.cursor {
+  cursor: pointer;
+}
