@@ -186,11 +186,24 @@ body {
   .note__text p {
     font-size: 1.025rem;
   }
+
+  .envelop__content {
+    width: 100%;
+    height: 100%;
+    bottom: 0rem;
+    left: 0;
+    position: absolute;
+    z-index: 200;
+  }
+
+
 }
 @media (min-width: 600px) {
   .note__text p {
     font-size: 1.15rem;
   }
+
+ 
 }
 
 .scissors {
